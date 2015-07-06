@@ -1,0 +1,1 @@
+{"version":3,"sources":["alerts.coffee"],"names":[],"mappings":"AAAA;EAAA,CAAA,CAAE,WAAF,CAAc,CAAC,GAAf,CAAmB,iBAAnB,CAAqC,CAAC,KAAtC,CAA4C,IAA5C,CAAiD,CAAC,OAAlD,CAA0D,GAA1D;AAAA","file":"app.js","sourcesContent":["$('div.alert').not('alert-important').delay(3000).slideUp(300)"],"sourceRoot":"/source/"}

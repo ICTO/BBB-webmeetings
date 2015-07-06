@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Xavrsl\Cas\Facades\Cas;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
 
@@ -30,4 +31,36 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * Authenticate a user from CAS single sign on and create
+     * the user if it's a new user.
+     *
+     * @return static
+     */
+    public static function findOrCreateFromCAS()
+    {
+        Cas::authenticate();
+        $username = Cas::user();
+        $userAttributes = Cas::getAttributes();
+        if(!$user = static::where('name', $username)->first()) {
+            $user = new static();
+            $user->name = $username;
+            $user->email = $userAttributes['email'];
+            $user->full_name = $userAttributes['full_name'];
+
+            $user->save();
+        }
+        return $user;
+    }
+
+    /**
+     * A user can have many meetings
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function meetings()
+    {
+        return $this->hasMany('App\Meetings');
+    }
 }

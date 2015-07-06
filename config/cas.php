@@ -35,7 +35,7 @@ return [
         |
         */
 
-        'cas_port' => env('CAS_PORT', 443),
+        'cas_port' => (int) env('CAS_PORT', 443),
 
 
         /*
