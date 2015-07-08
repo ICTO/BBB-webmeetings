@@ -1,29 +1,29 @@
 @extends('app')
 
 @section('content')
-    <h1>Edit: {!! $meeting->title !!}</h1>
+    <h1>{{ trans('meetings.edit') }} {!! $meeting->title !!}</h1>
 
     <hr/>
 
     {!! Form::model($meeting, ['method' => 'PATCH', 'action' => ['MeetingController@update', $meeting->id]]) !!}
 
         <div class="form-group">
-            {!! Form::label('title', 'Title:') !!}
-            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title for this meeting']) !!}
+            {!! Form::label('title', trans('meetings.title')) !!}
+            {!! Form::text('title', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('description', 'Description:') !!}
-            {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Meeting description']) !!}
+            {!! Form::label('description',trans('meetings.description')) !!}
+            {!! Form::text('description', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('welcomeText', 'Welcome text:') !!}
-            {!! Form::text('welcomeText', null, ['class' => 'form-control', 'placeholder' => 'Welcome text']) !!}
+            {!! Form::label('welcomeText', trans('meetings.welcomeText')) !!}
+            {!! Form::text('welcomeText', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::submit('Update meeting', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit(trans('meetings.edit'), ['class' => 'btn btn-primary form-control']) !!}
         </div>
 
     {!! Form::close() !!}

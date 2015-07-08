@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <h1>Meetings</h1>
+    <h1>{{ trans('meetings.meetings') }}</h1>
 
     @foreach ($meetings as $meeting)
         <meeting class="list-group-item">

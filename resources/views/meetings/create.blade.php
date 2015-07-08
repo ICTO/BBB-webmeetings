@@ -1,39 +1,39 @@
 @extends('app')
 
 @section('content')
-    <h1>Create new meeting</h1>
+    <h1>{{ trans('meetings.create') }}</h1>
 
     <hr/>
 
     {!! Form::open(['url' => 'meeting']) !!}
 
     <div class="form-group">
-        {!! Form::label('title', 'Title:') !!}
-        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title for this meeting']) !!}
+        {!! Form::label('title', trans('meetings.title')) !!}
+        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => trans('meetings.titlePlaceholder')]) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('description', 'Description:',['class' => 'form-group-addon']) !!}
-        {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Meeting description']) !!}
+        {!! Form::label('description', trans('meetings.description'),['class' => 'form-group-addon']) !!}
+        {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => trans('meetings.descriptionPlaceholder')]) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('welcomeText', 'Welcome text:') !!}
-        {!! Form::text('welcomeText', null, ['class' => 'form-control', 'placeholder' => 'Welcome text']) !!}
+        {!! Form::label('welcomeText', trans('meetings.welcomeText')) !!}
+        {!! Form::text('welcomeText', null, ['class' => 'form-control', 'placeholder' => trans('meetings.welcomeTextPlaceholder')]) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('moderatorPassword', 'Moderator password:') !!}
-        {!! Form::password('moderatorPassword', null, ['class' => 'form-control', 'placeholder' => 'moderator']) !!}
+        {!! Form::label('moderatorPassword', trans('meetings.moderatorPassword')) !!}
+        {!! Form::password('moderatorPassword', null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('attendeePassword', 'Attendee password:') !!}
+        {!! Form::label('attendeePassword', trans('meetings.attendeePassword')) !!}
         {!! Form::password('attendeePassword', null, ['class' => 'form-control', 'placeholder' => 'attendee']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Create meeting', ['class' => 'btn btn-primary form-control']) !!}
+        {!! Form::submit(trans('meetings.create'), ['class' => 'btn btn-primary form-control']) !!}
     </div>
 
     {!! Form::close() !!}

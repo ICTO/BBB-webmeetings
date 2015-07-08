@@ -11,15 +11,15 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-bbb">
             <ul class="nav navbar-nav">
-                <li><a href="{{ action('MeetingController@index') }}">List meetings</a></li>
-                <li><a href="{{ action('MeetingController@indexOwnMeetings') }}">My meetings</a></li>
-                <li><a href="{{ action('MeetingController@create') }}">Create meeting</a></li>
+                <li><a href="{{ action('MeetingController@index') }}">{{ trans('meetings.list') }}</a></li>
+                <li><a href="{{ action('MeetingController@indexOwnMeetings') }}">{{ trans('meetings.myMeetings') }}</a></li>
+                <li><a href="{{ action('MeetingController@create') }}">{{ trans('meetings.create') }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Cas::isAuthenticated())
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/logout">{{ trans('meetings.logout') }}</a></li>
                 @else
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/login">{{ trans('meetings.login') }}</a></li>
                 @endif
             </ul>
         </div>
