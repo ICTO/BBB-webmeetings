@@ -7,7 +7,24 @@
 
     {!! Form::model($meeting, ['method' => 'PATCH', 'action' => ['MeetingController@update', $meeting->id]]) !!}
 
-        @include('meetings.form', ['submitButton' => 'Update meeting'])
+        <div class="form-group">
+            {!! Form::label('title', 'Title:') !!}
+            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title for this meeting']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('description', 'Description:') !!}
+            {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Meeting description']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('welcomeText', 'Welcome text:') !!}
+            {!! Form::text('welcomeText', null, ['class' => 'form-control', 'placeholder' => 'Welcome text']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::submit('Update meeting', ['class' => 'btn btn-primary form-control']) !!}
+        </div>
 
     {!! Form::close() !!}
 

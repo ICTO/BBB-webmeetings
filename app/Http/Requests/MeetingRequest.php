@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Meeting;
+use Auth;
 
 class MeetingRequest extends Request
 {
@@ -13,7 +15,13 @@ class MeetingRequest extends Request
      */
     public function authorize()
     {
+        if(Request::route()->getMethods()[0] == 'PATCH') {
+            $meeting = Request::route()->getParameter('meeting');
 
+            if($meeting->user->id !== Auth::id()) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -24,12 +32,25 @@ class MeetingRequest extends Request
      */
     public function rules()
     {
-        return [
-            'title' => 'required',
-            'description' => 'required',
-            'welcomeText' => 'required',
-            'moderatorPassword' => 'required',
-            'attendeePassword' => 'required'
-        ];
+        if(Request::route()->getMethods()[0] == 'PATCH') {
+            return [
+                'title' => 'required',
+                'description' => 'required',
+                'welcomeText' => 'required'
+            ];
+        } else {
+            return [
+                'title' => 'required',
+                'description' => 'required',
+                'welcomeText' => 'required',
+                'moderatorPassword' => 'required',
+                'attendeePassword' => 'required'
+            ];
+        }
+    }
+
+    public function forbiddenResponse()
+    {
+        abort(403);
     }
 }

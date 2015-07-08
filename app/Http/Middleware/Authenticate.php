@@ -20,15 +20,14 @@ class Authenticate
     {
         $user = User::findOrCreateFromCAS();
 
-        if (Auth::guest() || Auth::user()->uid != $user->uid) {
+        if (Auth::guest() || Auth::user()->uid != $user->id) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
                 Auth::login($user);
-                return Redirect::intended('/');
+                return $next($request);
             }
         }
-
         return $next($request);
     }
 }

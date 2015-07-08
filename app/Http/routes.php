@@ -13,6 +13,7 @@
 Route::get('/', 'MeetingController@index');
 Route::resource('meeting','MeetingController');
 Route::get('/mymeetings', 'MeetingController@indexOwnMeetings');
+Route::post('/meeting/{meeting}/join', 'MeetingController@join');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('login', function () {
@@ -21,9 +22,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('meeting', 'MeetingController', ['only' => ['create', 'store', 'update', 'destroy', 'edit']]);
 });
 
-Route::get('/logout', function() {
-    \Auth::logout();
-    \Cas::logout(['service' => url('/')]);
-    redirect()->action('MeetingController@index');
-});
+Route::get('/logout', 'UserController@logout');
 

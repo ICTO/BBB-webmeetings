@@ -1,12 +1,13 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use Auth;
+use DebugBar\DebugBar;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\MeetingRequest;
 use App\Http\Controllers\Controller;
 use App\Meeting;
+use Illuminate\Support\Facades\Redirect;
 use Uuid;
 use Bigbluebutton;
 
@@ -48,16 +49,6 @@ class MeetingController extends Controller
      */
     public function show(Meeting $meeting)
     {
-        if (Bigbluebutton::isMeetingRunning($meeting->meetingId)) {
-            // Get join url
-            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, 'test', $meeting->moderatorPassword);
-        } else {
-            // create meeting and get join url
-            $meetingParams = ['moderatorPW' => $meeting->moderatorPassword];
-            Bigbluebutton::createMeeting($meeting->meetingId, $meetingParams);
-            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, 'test', $meeting->moderatorPassword);
-        }
-        dd($joinUrl);
         return view('meetings.show', compact('meeting'));
     }
 
@@ -90,7 +81,6 @@ class MeetingController extends Controller
      */
     public function store(MeetingRequest $request)
     {
-
         $meeting = new Meeting;
         $meeting->meetingId = Uuid::generate();
         $meeting->user_id = Auth::id();
@@ -118,5 +108,32 @@ class MeetingController extends Controller
         $meeting->update($request->all());
 
         return redirect('/');
+    }
+
+    /**
+     * Request the bigbluebutton join meeting url and redirect to user to this url
+     *
+     * @param Meeting $meeting
+     * @param Request $request
+     * @return mixed
+     */
+    public function join(Meeting $meeting, Request $request)
+    {
+        if (Bigbluebutton::isMeetingRunning($meeting->meetingId)) {
+            // Get join url
+            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, 'test', $meeting->moderatorPassword);
+        } else {
+            // create meeting and get join url
+            $meetingParams = [
+                'moderatorPW' => $meeting->moderatorPassword,
+                'attendeePW' => $meeting->attendeePassword,
+                'welcome' => $meeting->welcomeText,
+                'name' => $meeting->title,
+                'logoutURL' => url('/')
+            ];
+            Bigbluebutton::createMeeting($meeting->meetingId, $meetingParams);
+            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->geT('password'));
+        }
+        return Redirect::to($joinUrl);
     }
 }

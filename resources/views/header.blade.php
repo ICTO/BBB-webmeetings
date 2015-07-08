@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">BBB</a>
+            <a class="navbar-brand" href="{{ action('MeetingController@index') }}">BBB</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-bbb">
             <ul class="nav navbar-nav">
@@ -16,7 +16,7 @@
                 <li><a href="{{ action('MeetingController@create') }}">Create meeting</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                @if (Auth::check())
+                @if (Cas::isAuthenticated())
                     <li><a href="/logout">Logout</a></li>
                 @else
                     <li><a href="/login">Login</a></li>
