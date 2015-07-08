@@ -1,11 +1,12 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Meeting extends Model {
+
+    use SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -26,6 +27,8 @@ class Meeting extends Model {
         'moderatorPassword',
         'attendeePassword',
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * A meeting belongs to a single userg

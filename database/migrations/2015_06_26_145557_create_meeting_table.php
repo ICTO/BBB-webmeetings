@@ -22,6 +22,7 @@ class CreateMeetingTable extends Migration
             $table->string('description');
             $table->string('welcomeText')->default("Welcome to this webmeeting.");
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')
                 ->references('id')
