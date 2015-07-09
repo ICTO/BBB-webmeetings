@@ -16,7 +16,9 @@ elixir(function(mix) {
     mix.coffee('alerts.coffee');
     mix.scripts([
         '../bower/jquery/dist/jquery.js',
-        '../bower/bootstrap/dist/js/bootstrap.js'
+        '../bower/bootstrap/dist/js/bootstrap.js',
+        '../bower/vue/dist/vue.js',
+        '../bower/vue-resource/dist/vue-resource.js'
     ], 'public/js/vendor.js');
 
 
