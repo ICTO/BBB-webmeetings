@@ -12,14 +12,12 @@
 */
 Route::get('/', 'MeetingController@index');
 Route::resource('meeting','MeetingController');
-Route::get('/mymeetings', 'MeetingController@indexOwnMeetings');
 Route::post('/meeting/{meeting}/join', 'MeetingController@join');
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('login', function () {
-        redirect()->action('MeetingController@index');
-    });
+    Route::get('/login', 'MeetingController@index');
     Route::resource('meeting', 'MeetingController', ['only' => ['create', 'store', 'update', 'destroy', 'edit']]);
+    Route::get('/mymeetings', 'MeetingController@indexOwnMeetings');
 });
 
 Route::get('/logout', 'UserController@logout');
