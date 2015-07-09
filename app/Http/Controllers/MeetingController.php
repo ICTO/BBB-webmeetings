@@ -92,7 +92,7 @@ class MeetingController extends Controller
 
         $meeting->save();
 
-        flash()->success('Your meeting was created');
+        flash()->success(trans('meetings.createdFlashMessage'));
         return redirect('/');
     }
 
@@ -107,6 +107,7 @@ class MeetingController extends Controller
     {
         $meeting->update($request->all());
 
+        flash()->success(trans('meetings.updatedFlashMessage'));
         return redirect('/');
     }
 

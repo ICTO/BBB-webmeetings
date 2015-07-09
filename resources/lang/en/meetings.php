@@ -23,6 +23,8 @@ return [
     'creator'                   => 'Created by:',
     'join'                      => 'Join webmeeting',
     'username'                  => 'Name',
-    'password'                  => 'Password'
+    'password'                  => 'Password',
+    'createdFlashMessage'       => 'Your meeting has been created',
+    'updatedFlashMessage'       => 'Your meeting was succesfully updated'
 
 ];
