@@ -11,11 +11,11 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-bbb">
             <ul class="nav navbar-nav">
-                <li><a href="{{ action('MeetingController@index') }}">{{ trans('meetings.list') }}</a></li>
+                <li><a href="{{ url('/') }}">{{ trans('meetings.list') }}</a></li>
                 @if (Cas::isAuthenticated())
-                    <li><a href="{{ action('MeetingController@indexOwnMeetings') }}">{{ trans('meetings.myMeetings') }}</a></li>
+                    <li><a href="{{ url('/mymeetings') }}">{{ trans('meetings.myMeetings') }}</a></li>
                 @endif
-                <li><a href="{{ action('MeetingController@create') }}">{{ trans('meetings.create') }}</a></li>
+                <li><a href="{{ url('/meeting/create') }}">{{ trans('meetings.create') }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Cas::isAuthenticated())

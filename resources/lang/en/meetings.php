@@ -25,6 +25,7 @@ return [
     'username'                  => 'Name',
     'password'                  => 'Password',
     'createdFlashMessage'       => 'Your meeting has been created',
-    'updatedFlashMessage'       => 'Your meeting was succesfully updated'
+    'updatedFlashMessage'       => 'Your meeting was succesfully updated',
+    'searchFilter'              => 'Search for ...'
 
 ];

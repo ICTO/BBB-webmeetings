@@ -24,9 +24,15 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        $meetings = Meeting::latest()->get();
+        return view('meetings.index');
+    }
 
-        return view('meetings.index', compact('meetings'));
+    public function apiIndex()
+    {
+        $meetings = Meeting::latest()->with(['user' => function ($query){
+            $query->select('id', 'full_name');
+        }])->select('id', 'user_id', 'title', 'description', 'created_at', 'updated_at')->get();
+        return $meetings;
     }
 
     /**
@@ -38,7 +44,7 @@ class MeetingController extends Controller
     {
         $meetings = Meeting::latest()->fromUser()->get();
 
-        return view('meetings.index', compact('meetings'));
+        return view('meetings.mymeetings', compact('meetings'));
     }
 
     /**
@@ -71,6 +77,17 @@ class MeetingController extends Controller
     public function edit(Meeting $meeting)
     {
         return view('meetings.edit', compact('meeting'));
+    }
+
+    public function delete(Meeting $meeting)
+    {
+        $this->destroy($meeting);
+        return Redirect::to('mymeetings');
+    }
+
+    public function destroy(Meeting $meeting)
+    {
+        $meeting->delete();
     }
 
     /**
