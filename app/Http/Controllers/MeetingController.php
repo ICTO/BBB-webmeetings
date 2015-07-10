@@ -27,6 +27,11 @@ class MeetingController extends Controller
         return view('meetings.index');
     }
 
+    /**
+     * Api response that returns all meetings
+     *
+     * @return mixed
+     */
     public function apiIndex()
     {
         $meetings = Meeting::latest()->with(['user' => function ($query){
@@ -79,12 +84,24 @@ class MeetingController extends Controller
         return view('meetings.edit', compact('meeting'));
     }
 
+    /**
+     * Delete a single meeting ( GET )
+     *
+     * @param Meeting $meeting
+     * @return mixed
+     */
     public function delete(Meeting $meeting)
     {
         $this->destroy($meeting);
         return Redirect::to('mymeetings');
     }
 
+    /**
+     * Deletes a single meeting ( HTTP DELETE )
+     *
+     * @param Meeting $meeting
+     * @throws \Exception
+     */
     public function destroy(Meeting $meeting)
     {
         $meeting->delete();

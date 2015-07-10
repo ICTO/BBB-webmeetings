@@ -40,6 +40,12 @@ class Meeting extends Model {
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * Query scope that limits the meetings to those for the current logged in user
+     *
+     * @param $query
+     * @return mixed
+     */
     public function scopeFromUser($query)
     {
         return $query->where('user_id', Auth::id());

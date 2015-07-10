@@ -10,8 +10,15 @@ use Auth;
 use Session;
 use Cas;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller
 {
+    /**
+     * Logout the current user
+     */
     public function logout()
     {
         Auth::logout();
