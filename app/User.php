@@ -46,8 +46,8 @@ class User extends Model implements AuthenticatableContract
         if(!$user = static::where('name', $username)->first()) {
             $user = new static();
             $user->name = $username;
-            $user->email = $userAttributes['email'];
-            $user->full_name = $userAttributes['full_name'];
+            $user->email = $userAttributes['mail'];
+            $user->full_name = $userAttributes['givenname'] . ' ' . $userAttributes['surname'];
 
             $user->save();
         }
