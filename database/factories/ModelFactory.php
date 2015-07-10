@@ -13,9 +13,21 @@
 
 $factory->define(App\User::class, function ($faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->userName,
         'email' => $faker->email,
-        'password' => str_random(10),
+        'full_name' => $faker->name,
         'remember_token' => str_random(10),
+    ];
+});
+
+
+$factory->define(App\Meeting::class, function ($faker) {
+    return [
+        'meetingId' => $faker->uuid,
+        'moderatorPassword' => $faker->password,
+        'attendeePassword' => $faker->password,
+        'title' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'welcomeText' => $faker->paragraph,
     ];
 });
