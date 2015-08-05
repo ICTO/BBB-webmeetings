@@ -156,7 +156,7 @@ class MeetingController extends Controller
     {
         if (Bigbluebutton::isMeetingRunning($meeting->meetingId)) {
             // Get join url
-            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, 'test', $meeting->moderatorPassword);
+            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('password'));
         } else {
             // create meeting and get join url
             $meetingParams = [
@@ -167,7 +167,7 @@ class MeetingController extends Controller
                 'logoutURL' => url('/')
             ];
             Bigbluebutton::createMeeting($meeting->meetingId, $meetingParams);
-            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->geT('password'));
+            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('password'));
         }
         return Redirect::to($joinUrl);
     }
