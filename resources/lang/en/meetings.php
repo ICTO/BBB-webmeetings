@@ -5,10 +5,10 @@ return [
     /**
      * Translations file for the webmeetings application
      */
-    'meetings'                  => 'Meetings',
-    'create'                    => 'Create meeting',
-    'list'                      => 'List meetings',
-    'myMeetings'                => 'My meetings',
+    'meetings'                  => 'Meeting rooms',
+    'create'                    => 'Create meeting room',
+    'list'                      => 'List meeting rooms',
+    'myMeetings'                => 'My meeting room',
     'logout'                    => 'logout',
     'login'                     => 'login',
     'title'                     => 'Title',
@@ -19,13 +19,13 @@ return [
     'welcomeTextPlaceholder'    => 'Welcome text shown in webmeeting',
     'moderatorPassword'         => 'Moderator password',
     'attendeePassword'          => 'Attendee password',
-    'edit'                      => 'Edit meeting',
+    'edit'                      => 'Edit meeting room',
     'creator'                   => 'Created by:',
     'join'                      => 'Join webmeeting',
     'username'                  => 'Name',
     'password'                  => 'Password',
     'createdFlashMessage'       => 'Your meeting has been created',
     'updatedFlashMessage'       => 'Your meeting was succesfully updated',
-    'searchFilter'              => 'Search for ...'
-
+    'searchFilter'              => 'Search for ...',
+    'wrongMeetingCredentials'   => 'The provided password did not match the moderator or attendee password for this meeting'
 ];

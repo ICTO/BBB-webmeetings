@@ -154,6 +154,12 @@ class MeetingController extends Controller
      */
     public function join(Meeting $meeting, Request $request)
     {
+        // Check if password provided equals the moderator or attendee password
+        if($meeting->moderatorPassword !== $request->get('password') || $meeting->attendeePassword !== $request->get('password')) {
+            flash()->error(trans('meetings.wrongMeetingCredentials'));
+            return redirect('/meeting/' . $meeting->id);
+        }
+
         if (Bigbluebutton::isMeetingRunning($meeting->meetingId)) {
             // Get join url
             $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('password'));
@@ -169,6 +175,7 @@ class MeetingController extends Controller
             Bigbluebutton::createMeeting($meeting->meetingId, $meetingParams);
             $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('password'));
         }
+
         return Redirect::to($joinUrl);
     }
 }
