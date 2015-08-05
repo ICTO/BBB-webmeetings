@@ -6696,5 +6696,16 @@ button.close {
     display: none !important;
   }
 }
+meeting > h2 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+meeting > .body {
+  margin-top: 1em;
+}
+meeting > .description,
+meeting > .creator {
+  margin-bottom: 0.5em;
+}
 
 /*# sourceMappingURL=app.css.map */

@@ -2,33 +2,35 @@
 
 @section('content')
 
-    <h1>{{ $meeting->title }}</h1>
+    <meeting>
+        <h1>{{ $meeting->title }}</h1>
 
-    <span>{{ $meeting->description }}</span><br />
+        <div class="description">{{ $meeting->description }}</div>
 
-    <span>{{ trans('meetings.creator') }} {{ $meeting->user->full_name }}</span><br />
+        <div class="creator">{{ trans('meetings.creator') }} {{ $meeting->user->full_name }}</div>
 
-    <span>{{ trans('meetings.join') }}</span>
+        <div class="join-form-header"><h3>{{ trans('meetings.join') }}</h3></div>
 
-    {!! Form::open(['url' => 'meeting/' . $meeting->id .'/join']) !!}
+        {!! Form::open(['url' => 'meeting/' . $meeting->id .'/join']) !!}
 
-    <div class="form-group">
-        {!! Form::label('username', trans('meetings.username')) !!}
-        @if (Auth::check())
-            {!! Form::text('username', Auth::user()->name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
-        @else
-            {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
-        @endif
-    </div>
+        <div class="form-group">
+            {!! Form::label('username', trans('meetings.username')) !!}
+            @if (Auth::check())
+                {!! Form::text('username', Auth::user()->name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+            @else
+                {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+            @endif
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('password', trans('meetings.password')) !!}
-        {!! Form::password('password', null, ['class' => 'form-control', 'placeholder' => 'password']) !!}
-    </div>
+        <div class="form-group">
+            {!! Form::label('password', trans('meetings.password')) !!}
+            {!! Form::password('password', null, ['class' => 'form-control', 'placeholder' => 'password']) !!}
+        </div>
 
-    <div class="form-group">
-        {!! Form::submit(trans('meetings.join'), ['class' => 'btn btn-primary form-control']) !!}
-    </div>
+        <div class="form-group">
+            {!! Form::submit(trans('meetings.join'), ['class' => 'btn btn-primary form-control']) !!}
+        </div>
 
-    {!! Form::close() !!}
+        {!! Form::close() !!}
+    </meeting>
 @stop
