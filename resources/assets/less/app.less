@@ -1,14 +1,12 @@
+/* ==== Bootstrap ==== */
 @import "../bower/bootstrap/less/bootstrap";
 
-meeting > h2 {
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-}
+/* ==== Google font ==== */
+@import url('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Montserrat:700|Merriweather:400italic');
 
-meeting > .body {
-  margin-top: 1em;
-}
-
-meeting > .description, meeting > .creator {
-  margin-bottom: 0.5em;
-}
+/* ==== Import variables and bootstrap overrides and extensions ==== */
+@import "variables.less";
+@import "body.less";
+@import "meeting.less";
+@import "header.less";
+@import "footer.less";

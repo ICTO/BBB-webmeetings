@@ -5,6 +5,8 @@
 
     <hr/>
 
+    {{ trans('meetings.createDescription') }}
+
     {!! Form::open(['url' => 'meeting']) !!}
 
     <div class="form-group">

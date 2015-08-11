@@ -12,10 +12,13 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.less([
+        'app.less'
+    ]);
     mix.coffee([
         'alerts.coffee',
-        'meetings.coffee'
+        'meetings.coffee',
+        'header-scroll.coffee'
     ]);
     mix.scripts([
         '../bower/jquery/dist/jquery.js',
@@ -28,4 +31,5 @@ elixir(function(mix) {
     mix.version(['css/app.css', 'js/vendor.js', 'js/app.js'])
 
     mix.copy('resources/assets/bower/bootstrap/fonts', 'public/build/fonts');
+    mix.copy('resources/assets/img', 'public/img');
 });

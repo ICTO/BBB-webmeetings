@@ -8,13 +8,13 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body>
+    <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
         @include('header')
         <div class="container">
             @include('flash::message')
             @yield('content')
         </div>
-        @yield('footer')
+        @include('footer')
         <script src="{{ elixir('js/vendor.js') }}"></script>
         <script src="{{ elixir('js/app.js') }}"></script>
     </body>
