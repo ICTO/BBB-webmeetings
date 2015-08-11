@@ -1,6 +1,11 @@
 /vendor
 /node_modules
 /resources/assets/bower
+/public/build
+/public/css
+/public/fonts
+/public/img
+/public/js
 Homestead.yaml
 .env
 .idea
