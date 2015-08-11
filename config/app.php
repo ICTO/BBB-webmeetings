@@ -141,6 +141,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Icto\Bigbluebutton\BigbluebuttonServiceProvider::class,
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -202,7 +203,8 @@ return [
         'Debugbar'  => Barryvdh\Debugbar\Facade::class,
         'Uuid'      => Webpatser\Uuid\Uuid::class,
         'Flash'     => Laracasts\Flash\Flash::class,
-        'Bigbluebutton' => Icto\Bigbluebutton\Facades\Bigbluebutton::class
+        'Bigbluebutton' => Icto\Bigbluebutton\Facades\Bigbluebutton::class,
+        'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class
 
     ],
 

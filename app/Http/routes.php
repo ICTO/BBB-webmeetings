@@ -10,17 +10,22 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', 'MeetingController@index');
-Route::resource('meeting','MeetingController');
-Route::post('/meeting/{meeting}/join', 'MeetingController@join');
-Route::get('/api/listmeetings', 'MeetingController@apiIndex');
 
-Route::group(['middleware' => ['auth']], function(){
-    Route::get('/mymeetings', 'MeetingController@indexOwnMeetings');
-    Route::get('/login', 'MeetingController@index');
-    Route::resource('meeting', 'MeetingController', ['only' => ['create', 'store', 'update', 'destroy', 'edit']]);
-    Route::get('/meeting/{meeting}/delete', 'MeetingController@delete');
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    Route::get('/', 'MeetingController@index');
+    Route::resource('meeting','MeetingController');
+    Route::post('/meeting/{meeting}/join', 'MeetingController@join');
+    Route::get('/api/listmeetings', 'MeetingController@apiIndex');
+
+    Route::group(['middleware' => ['auth']], function(){
+        Route::get('/mymeetings', 'MeetingController@indexOwnMeetings');
+        Route::get('/login', 'MeetingController@index');
+        Route::resource('meeting', 'MeetingController', ['only' => ['create', 'store', 'update', 'destroy', 'edit']]);
+        Route::get('/meeting/{meeting}/delete', 'MeetingController@delete');
+    });
+
+    Route::get('/logout', 'UserController@logout');
 });
 
-Route::get('/logout', 'UserController@logout');
 
