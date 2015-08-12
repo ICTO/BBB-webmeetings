@@ -155,7 +155,7 @@ class MeetingController extends Controller
     public function join(Meeting $meeting, Request $request)
     {
         // Check if password provided equals the moderator or attendee password
-        if($meeting->moderatorPassword !== $request->get('password') || $meeting->attendeePassword !== $request->get('password')) {
+        if($meeting->moderatorPassword !== $request->get('password') && $meeting->attendeePassword !== $request->get('password')) {
             flash()->error(trans('meetings.wrongMeetingCredentials'));
             return redirect('/meeting/' . $meeting->id);
         }
