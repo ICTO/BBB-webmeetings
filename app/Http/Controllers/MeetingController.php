@@ -108,9 +108,9 @@ class MeetingController extends Controller
     }
 
     /**
-     * Store a new meeting oci_fetch_object
+     * Store a new meeting
      *
-     * @param  CreateMeeting $request
+     * @param  MeetingRequest $request
      * @return request
      */
     public function store(MeetingRequest $request)
