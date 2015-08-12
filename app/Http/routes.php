@@ -11,12 +11,10 @@
 |
 */
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]], function()
-{
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]], function() {
+
     Route::get('/', 'MeetingController@index');
     Route::resource('meeting','MeetingController');
-    Route::post('/meeting/{meeting}/join', 'MeetingController@join');
-    Route::get('/api/listmeetings', 'MeetingController@apiIndex');
 
     Route::group(['middleware' => ['auth']], function(){
         Route::get('/mymeetings', 'MeetingController@indexOwnMeetings');
@@ -28,4 +26,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::get('/logout', 'UserController@logout');
 });
 
-
+Route::post('/meeting/{meeting}/join', 'MeetingController@join');
+Route::get('/api/listmeetings', 'MeetingController@apiIndex');
