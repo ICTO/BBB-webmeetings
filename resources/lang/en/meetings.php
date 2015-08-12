@@ -10,6 +10,7 @@ return [
     'createDescription'         => 'Please note that all fields are required',
     'list'                      => 'List',
     'myMeetings'                => 'My meeting rooms',
+    'noMyMeetings'              => 'You have no meeting rooms at this moment',
     'logout'                    => 'Log out',
     'login'                     => 'Log in',
     'title'                     => 'Title',
