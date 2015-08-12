@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]], function()
 {
     Route::get('/', 'MeetingController@index');
     Route::resource('meeting','MeetingController');
