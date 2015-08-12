@@ -24,7 +24,7 @@
 
         <div class="form-group">
             {!! Form::label('password', trans('meetings.password')) !!}
-            {!! Form::password('password', null, ['class' => 'form-control', 'placeholder' => 'password']) !!}
+            {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'password']) !!}
         </div>
 
         <div class="form-group">
