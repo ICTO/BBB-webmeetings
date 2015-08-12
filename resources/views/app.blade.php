@@ -10,7 +10,7 @@
     </head>
     <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
         @include('header')
-        <div class="container">
+        <div class="container meeting-container">
             @include('flash::message')
             @yield('content')
         </div>
