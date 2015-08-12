@@ -6,6 +6,7 @@
 /public/fonts
 /public/img
 /public/js
+/public/adminer.php
 Homestead.yaml
 .env
 .idea
