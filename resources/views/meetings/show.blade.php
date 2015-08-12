@@ -16,7 +16,7 @@
         <div class="form-group">
             {!! Form::label('username', trans('meetings.username')) !!}
             @if (Auth::check())
-                {!! Form::text('username', Auth::user()->name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+                {!! Form::text('username', Auth::user()->full_name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
             @else
                 {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
             @endif
