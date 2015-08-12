@@ -13,7 +13,8 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.less([
-        'app.less'
+        'app.less',
+        '../bower/components-font-awesome/less/font-awesome.less'
     ]);
     mix.coffee([
         'alerts.coffee',
@@ -31,5 +32,6 @@ elixir(function(mix) {
     mix.version(['css/app.css', 'js/vendor.js', 'js/app.js'])
 
     mix.copy('resources/assets/bower/bootstrap/fonts', 'public/build/fonts');
+    mix.copy('resources/assets/bower/components-font-awesome/fonts', 'public/build/fonts');
     mix.copy('resources/assets/img', 'public/img');
 });

@@ -4,6 +4,7 @@
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.5",
     "vue": "*",
-    "vue-resource": "~0.1.5"
+    "vue-resource": "~0.1.5",
+    "components-font-awesome" : "*"
   }
 }
