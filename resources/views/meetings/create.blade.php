@@ -26,12 +26,12 @@
 
     <div class="form-group">
         {!! Form::label('moderatorPassword', trans('meetings.moderatorPassword')) !!}
-        {!! Form::password('moderatorPassword', null, ['class' => 'form-control']) !!}
+        {!! Form::password('moderatorPassword', ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('attendeePassword', trans('meetings.attendeePassword')) !!}
-        {!! Form::password('attendeePassword', null, ['class' => 'form-control', 'placeholder' => 'attendee']) !!}
+        {!! Form::password('attendeePassword', ['class' => 'form-control', 'placeholder' => 'attendee']) !!}
     </div>
 
     <div class="form-group">
