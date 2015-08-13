@@ -17,6 +17,11 @@ use Bigbluebutton;
  */
 class MeetingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permissions', ['only' => ['edit', 'delete', 'destroy', 'update']]);
+    }
+
     /**
      * Show all meetings
      *
