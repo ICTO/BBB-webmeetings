@@ -22,7 +22,7 @@
                 <li {{ (Request::url() === LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), url('/meeting/create'))) ? 'class=active' : '' }}>
                     <a href="{{ url('/meeting/create') }}"><i class="fa fa-plus fa-fw"></i>{{ trans('meetings.create') }}</a>
                 </li>
-                @if (Cas::isAuthenticated())
+                @if (Cas::isAuthenticated() && Auth::check())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{{ Auth::user()->full_name }}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
