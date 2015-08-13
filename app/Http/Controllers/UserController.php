@@ -23,6 +23,6 @@ class UserController extends Controller
     {
         Auth::logout();
         Session::flush();
-        Cas::logout(['service' => url('/')]);
+        Cas::logout(['service' => url('/'), 'url' => url('/')]);
     }
 }
