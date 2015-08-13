@@ -154,6 +154,12 @@ class MeetingController extends Controller
      */
     public function join(Meeting $meeting, Request $request)
     {
+        // Form validation
+        $this->validate($request, [
+            'username' => 'required|max:60',
+            'password' => 'required'
+        ]);
+
         // Check if password provided equals the moderator or attendee password
         if($meeting->moderatorPassword !== $request->get('password') && $meeting->attendeePassword !== $request->get('password')) {
             flash()->error(trans('meetings.wrongMeetingCredentials'));

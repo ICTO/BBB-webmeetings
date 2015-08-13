@@ -32,5 +32,6 @@
         </div>
 
         {!! Form::close() !!}
+        @include('errors.list')
     </meeting>
 @stop
