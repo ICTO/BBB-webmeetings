@@ -5,7 +5,7 @@
 				<li><i class="fa fa-language fa-2x"></i></li>
 				@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
 					<li>
-						<a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+						<a rel="alternate" {{ (LaravelLocalization::getCurrentLocale() === $localeCode) ? 'class=active' : '' }} hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
 							{{{ $properties['native'] }}}
 						</a>
 					</li>

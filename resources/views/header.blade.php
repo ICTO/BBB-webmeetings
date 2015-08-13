@@ -11,11 +11,17 @@
 
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}"><i class="fa fa-list fa-fw"></i>{{ trans('meetings.list') }}</a></li>
+                <li {{ (Request::url() === LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), url('/'))) ? 'class=active' : '' }}>
+                    <a href="{{ url('/') }}"><i class="fa fa-list fa-fw"></i>{{ trans('meetings.list') }}</a>
+                </li>
                 @if (Cas::isAuthenticated())
-                    <li><a href="{{ url('/mymeetings') }}"><i class="fa fa-list fa-fw"></i>{{ trans('meetings.myMeetings') }}</a></li>
+                    <li {{ (Request::url() === LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), url('/mymeetings'))) ? 'class=active' : '' }}>
+                        <a href="{{ url('/mymeetings') }}"><i class="fa fa-list fa-fw"></i>{{ trans('meetings.myMeetings') }}</a>
+                    </li>
                 @endif
-                <li><a href="{{ url('/meeting/create') }}"><i class="fa fa-plus fa-fw"></i>{{ trans('meetings.create') }}</a></li>
+                <li {{ (Request::url() === LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), url('/meeting/create'))) ? 'class=active' : '' }}>
+                    <a href="{{ url('/meeting/create') }}"><i class="fa fa-plus fa-fw"></i>{{ trans('meetings.create') }}</a>
+                </li>
                 @if (Cas::isAuthenticated())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{{ Auth::user()->full_name }}}<b class="caret"></b></a>
