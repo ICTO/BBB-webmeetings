@@ -19,7 +19,7 @@ return [
     'descriptionPlaceholder'        => 'Meeting room description',
     'welcomeText'                   => 'Welcome text',
     'welcomeTextPlaceholder'        => 'Welcome text in chat window of meeting room',
-    'moderatorAccessCode'           => 'Access code moderator',
+    'moderatorAccessCode'           => 'Access code moderators',
     'moderatorAccessCodePlaceholder'=> '12345',
     'attendeeAccessCode'            => 'Access code attendees',
     'attendeeAccessCodePlaceholder' => '54321',

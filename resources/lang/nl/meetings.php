@@ -19,7 +19,7 @@ return [
     'descriptionPlaceholder'        => 'Beschrijving meeting',
     'welcomeText'                   => 'Welkomtekst',
     'welcomeTextPlaceholder'        => 'Welkomtekst in het chat venster van de meeting',
-    'moderatorAccessCode'           => 'Toegangscode moderator',
+    'moderatorAccessCode'           => 'Toegangscode moderators',
     'moderatorAccessCodePlaceholder'=> '12345',
     'attendeeAccessCode'            => 'Toegangscode deelnemers',
     'attendeeAccessCodePlaceholder' => '54321',
