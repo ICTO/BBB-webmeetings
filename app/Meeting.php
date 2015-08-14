@@ -3,6 +3,7 @@
 use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Meeting extends Model {
 
@@ -28,7 +29,7 @@ class Meeting extends Model {
         'attendeeAccessCode',
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
      * A meeting belongs to a single userg
@@ -49,5 +50,10 @@ class Meeting extends Model {
     public function scopeFromUser($query)
     {
         return $query->where('user_id', Auth::id());
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value)->timezone('Europe/Brussels')->format('d-M-y H:i:s T');
     }
 }
