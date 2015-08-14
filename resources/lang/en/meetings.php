@@ -29,5 +29,7 @@ return [
     'createdFlashMessage'       => 'Your meeting room has been created.',
     'updatedFlashMessage'       => 'Your meeting room was successfully updated.',
     'searchFilter'              => 'Search for ...',
-    'wrongMeetingCredentials'   => 'The provided password did not match the moderator or attendee password for this web meeting.'
+    'wrongMeetingCredentials'   => 'The provided password did not match the moderator or attendee password for this web meeting.',
+    'actions'                   => 'Actions',
+    'lastedit'                  => 'Last edit'
 ];

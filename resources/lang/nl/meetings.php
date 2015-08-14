@@ -7,8 +7,10 @@ return [
      */
     'meetings'                  => 'Meetings',
     'create'                    => 'Aanmaken',
+    'createDescription'         => 'Gelieve op te merken dat alle velden verplicht zijn.',
     'list'                      => 'Lijst',
     'myMeetings'                => 'Mijn meetings',
+    'noMyMeetings'              => 'Je hebt nog geen meetingsroom.',
     'logout'                    => 'Afmelden',
     'login'                     => 'Aanmelden',
     'title'                     => 'Titel',
@@ -27,5 +29,7 @@ return [
     'createdFlashMessage'       => 'Uw meeting werd aangemaakt.',
     'updatedFlashMessage'       => 'Uw meeting werd aangepast.',
     'searchFilter'              => 'Zoeken naar ...',
-    'wrongMeetingCredentials'   => 'Het ingegeven wachtwoord komt niet overeen met het wachtwoord voor de moderator of de deelnemers van deze meeting'
+    'wrongMeetingCredentials'   => 'Het ingegeven wachtwoord komt niet overeen met het wachtwoord voor de moderator of de deelnemers van deze meeting',
+    'actions'                   => 'Acties',
+    'lastedit'                  => 'Laatst aangepast'
 ];
