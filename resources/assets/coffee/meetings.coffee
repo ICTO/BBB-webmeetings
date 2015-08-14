@@ -22,6 +22,7 @@ mymeetings = new Vue (
     meetings: {}
     sortKey: ''
     reverse: false
+    search: ''
 
   ready: () ->
     this.fetchMeetings()

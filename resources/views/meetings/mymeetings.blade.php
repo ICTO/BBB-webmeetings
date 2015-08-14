@@ -7,6 +7,7 @@
         @if (count($meetings) < 1)
             <div>{{ trans('meetings.noMyMeetings') }}</div>
         @else
+            <input v-model="search" type="text" class="form-control" placeholder="{{ trans('meetings.searchFilter') }}">
             <table class="table table-striped">
                 <thead>
                 <td v-on="click:sortBy('id')" v-class="active: sortKey == 'id'">#</td>
@@ -15,7 +16,7 @@
                 <td>{{ trans('meetings.actions') }}</td>
                 </thead>
                 <tbody>
-                    <tr v-repeat="meetings | orderBy sortKey reverse">
+                    <tr v-repeat="meetings | filterBy search | orderBy sortKey reverse">
                         <td>@{{ id }}</td>
                         <td><a href="/meeting/@{{ id }}">@{{ title }}</a></td>
                         <td>@{{ updated_at }}</td>
