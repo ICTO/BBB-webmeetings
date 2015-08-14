@@ -33,6 +33,9 @@ class ChangePasswordFields extends Migration
         Schema::table('meeting', function($table) {
             $table->renameColumn('moderatorAccessCode', 'moderatorPassword');
             $table->renameColumn('attendeeAccessCode', 'attendeePassword');
+        });
+
+        Schema::table('meeting', function($table) {
             $table->string('moderatorPassword')->change();
             $table->string('attendeePassword')->change();
         });
