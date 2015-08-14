@@ -4,15 +4,28 @@ index = new Vue (
   data:
     meetings: {}
     search: ''
+    currentPage:0
+    itemsPerPage: 20
 
-  ready: () ->
+  created: () ->
     this.fetchMeetings()
+
+  computed:
+    totalPages: () ->
+      return Math.ceil(this.meetings.length / this.itemsPerPage)
 
   methods:
     fetchMeetings: () ->
       this.$http.get('/api/listmeetings', (meetings) ->
         this.meetings = meetings
       )
+    setPage: (pageNumber) ->
+      this.currentPage = pageNumber
+
+  filters:
+    paginate: (list) ->
+      index = this.currentPage * this.itemsPerPage
+      return list.slice(index, index + this.itemsPerPage)
 )
 
 mymeetings = new Vue (
