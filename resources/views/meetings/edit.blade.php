@@ -23,6 +23,16 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('moderatorAccessCode', trans('meetings.moderatorAccessCode')) !!}
+            {!! Form::text('moderatorAccessCode', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('attendeeAccessCode', trans('meetings.attendeePassword')) !!}
+            {!! Form::text('attendeeAccessCode', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::submit(trans('meetings.edit'), ['class' => 'btn btn-primary form-control']) !!}
         </div>
 

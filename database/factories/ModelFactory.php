@@ -24,8 +24,8 @@ $factory->define(App\User::class, function ($faker) {
 $factory->define(App\Meeting::class, function ($faker) {
     return [
         'meetingId' => $faker->uuid,
-        'moderatorPassword' => $faker->password,
-        'attendeePassword' => $faker->password,
+        'moderatorAccessCode' => $faker->randomNumber(5),
+        'attendeeAccessCode' => $faker->randomNumber(5),
         'title' => $faker->sentence,
         'description' => $faker->paragraph,
         'welcomeText' => $faker->paragraph,

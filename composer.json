@@ -19,7 +19,8 @@
         "webpatser/laravel-uuid": "2.*",
         "laracasts/flash": "^1.3",
         "mcamara/laravel-localization": "1.0.*",
-        "icto/bigbluebutton": "dev-master"
+        "icto/bigbluebutton": "dev-master",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

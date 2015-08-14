@@ -25,13 +25,13 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('moderatorPassword', trans('meetings.moderatorPassword')) !!}
-        {!! Form::password('moderatorPassword', ['class' => 'form-control']) !!}
+        {!! Form::label('moderatorAccessCode', trans('meetings.moderatorAccessCode')) !!}
+        {!! Form::text('moderatorAccessCode', null, ['class' => 'form-control', 'placeholder' => trans('meetings.moderatorAccessCodePlaceholder')]) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('attendeePassword', trans('meetings.attendeePassword')) !!}
-        {!! Form::password('attendeePassword', ['class' => 'form-control', 'placeholder' => 'attendee']) !!}
+        {!! Form::label('attendeeAccessCode', trans('meetings.attendeeAccessCode')) !!}
+        {!! Form::text('attendeeAccessCode', null, ['class' => 'form-control', 'placeholder' => trans('meetings.attendeeAccessCodePlaceholder')]) !!}
     </div>
 
     <div class="form-group">

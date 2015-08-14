@@ -24,8 +24,8 @@ class Meeting extends Model {
         'title',
         'description',
         'welcomeText',
-        'moderatorPassword',
-        'attendeePassword',
+        'moderatorAccessCode',
+        'attendeeAccessCode',
     ];
 
     protected $dates = ['deleted_at'];

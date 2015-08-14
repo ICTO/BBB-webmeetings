@@ -32,21 +32,13 @@ class MeetingRequest extends Request
      */
     public function rules()
     {
-        if(Request::route()->getMethods()[0] == 'PATCH') {
-            return [
-                'title' => 'required',
-                'description' => 'required',
-                'welcomeText' => 'required'
-            ];
-        } else {
-            return [
-                'title' => 'required',
-                'description' => 'required',
-                'welcomeText' => 'required',
-                'moderatorPassword' => 'required',
-                'attendeePassword' => 'required'
-            ];
-        }
+        return [
+            'title' => 'required',
+            'description' => 'required',
+            'welcomeText' => 'required',
+            'moderatorAccessCode' => 'required|numeric|max:99999',
+            'attendeeAccessCode' => 'required|numeric|max:99999'
+        ];
     }
 
     public function forbiddenResponse()

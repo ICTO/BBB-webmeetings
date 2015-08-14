@@ -142,8 +142,8 @@ class MeetingController extends Controller
         $meeting->title = $request->title;
         $meeting->description = $request->description;
         $meeting->welcomeText = $request->welcomeText;
-        $meeting->moderatorPassword = $request->moderatorPassword;
-        $meeting->attendeePassword = $request->attendeePassword;
+        $meeting->moderatorAccessCode = $request->moderatorAccessCode;
+        $meeting->attendeeAccessCode = $request->attendeeAccessCode;
 
         $meeting->save();
 
@@ -182,7 +182,7 @@ class MeetingController extends Controller
         ]);
 
         // Check if password provided equals the moderator or attendee password
-        if($meeting->moderatorPassword !== $request->get('password') && $meeting->attendeePassword !== $request->get('password')) {
+        if($meeting->moderatorAccessCode !== $request->get('password') && $meeting->attendeeAccessCode !== $request->get('password')) {
             flash()->error(trans('meetings.wrongMeetingCredentials'));
             return redirect('/meeting/' . $meeting->id);
         }
@@ -193,8 +193,8 @@ class MeetingController extends Controller
         } else {
             // create meeting and get join url
             $meetingParams = [
-                'moderatorPW' => $meeting->moderatorPassword,
-                'attendeePW' => $meeting->attendeePassword,
+                'moderatorPW' => $meeting->moderatorAccessCode,
+                'attendeePW' => $meeting->attendeeAccessCode,
                 'welcome' => $meeting->welcomeText,
                 'name' => $meeting->title,
                 'logoutURL' => url('/')
