@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('attendeeAccessCode', trans('meetings.attendeePassword')) !!}
+            {!! Form::label('attendeeAccessCode', trans('meetings.attendeeAccessCode')) !!}
             {!! Form::text('attendeeAccessCode', null, ['class' => 'form-control']) !!}
         </div>
 
