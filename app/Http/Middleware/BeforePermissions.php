@@ -32,16 +32,4 @@ class BeforePermissions
 
         return $next($request);
     }
-
-    public function checkPermissions(Route $route)
-    {
-        $meeting = $route->parameters('meeting');
-        var_dump($meeting['meeting']->user_id);
-        var_dump(Auth::id());
-        if($meeting['meeting']->user_id !== Auth::id()) {
-            var_dump('test');
-            return redirect('/');
-        }
-        exit;
-    }
 }
