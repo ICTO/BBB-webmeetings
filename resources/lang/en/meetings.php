@@ -27,7 +27,7 @@ return [
     'creator'                       => 'Created by:',
     'join'                          => 'Join web meeting',
     'username'                      => 'Name',
-    'password'                      => 'Password',
+    'accessCode'                    => 'Access Code',
     'createdFlashMessage'           => 'Your meeting room has been created.',
     'updatedFlashMessage'           => 'Your meeting room was successfully updated.',
     'searchFilter'                  => 'Search for ...',

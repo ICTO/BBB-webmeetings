@@ -178,18 +178,18 @@ class MeetingController extends Controller
         // Form validation
         $this->validate($request, [
             'username' => 'required|max:60',
-            'password' => 'required'
+            'accessCode' => 'required|numeric|max:99999'
         ]);
 
         // Check if password provided equals the moderator or attendee password
-        if($meeting->moderatorAccessCode !== $request->get('password') && $meeting->attendeeAccessCode !== $request->get('password')) {
+        if($meeting->moderatorAccessCode !== $request->get('accessCode') && $meeting->attendeeAccessCode !== $request->get('accessCode')) {
             flash()->error(trans('meetings.wrongMeetingCredentials'));
             return redirect('/meeting/' . $meeting->id);
         }
 
         if (Bigbluebutton::isMeetingRunning($meeting->meetingId)) {
             // Get join url
-            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('password'));
+            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('accessCode'));
         } else {
             // create meeting and get join url
             $meetingParams = [
@@ -200,7 +200,7 @@ class MeetingController extends Controller
                 'logoutURL' => url('/')
             ];
             Bigbluebutton::createMeeting($meeting->meetingId, $meetingParams);
-            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('password'));
+            $joinUrl = Bigbluebutton::getJoinMeetingURL($meeting->meetingId, $request->get('username'), $request->get('accessCode'));
         }
 
         return Redirect::to($joinUrl);

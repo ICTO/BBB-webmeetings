@@ -23,8 +23,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('password', trans('meetings.password')) !!}
-            {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'password']) !!}
+            {!! Form::label('accessCode', trans('meetings.accessCode')) !!}
+            {!! Form::text('accessCode', null, ['class' => 'form-control', 'placeholder' => '12345']) !!}
         </div>
 
         <div class="form-group">
