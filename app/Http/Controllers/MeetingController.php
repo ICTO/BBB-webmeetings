@@ -46,6 +46,22 @@ class MeetingController extends Controller
     }
 
     /**
+     * Api mymeetings url
+     *
+     * Returns all the meetings for the logged in user
+     *
+     * @return mixed
+     */
+    public function apiMyMeetings()
+    {
+        $meetings = Meeting::latest()->with(['user' => function ($query){
+            $query->select('id', 'full_name');
+        }])->select('id', 'user_id', 'title', 'description', 'created_at', 'updated_at')
+            ->fromUser()->get();
+        return $meetings;
+    }
+
+    /**
      * Show a listing of your own meetings
      *
      * @return array|\Illuminate\View\View|mixed

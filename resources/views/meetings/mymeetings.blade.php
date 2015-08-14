@@ -1,28 +1,31 @@
 @extends('app')
 
 @section('content')
-    <h1>{{ trans('meetings.myMeetings') }}</h1>
+    <div id="mymeetings">
+        <h1>{{ trans('meetings.myMeetings') }}</h1>
 
-    @if (count($meetings) < 1)
-        <div>{{ trans('meetings.noMyMeetings') }}</div>
-    @else
-        <table class="table table-striped">
-            <thead>
-            <td>#</td>
-            <td>title</td>
-            <td>admin</td>
-            </thead>
-        @foreach ($meetings as $meeting)
-            <tr>
-                <td>{{ $meeting->id }}</td>
-                <td><a href="{{ action('MeetingController@show', [$meeting->id])}}">{{ $meeting->title}}</a></td>
-                <td>
-                    <a href="{{ action('MeetingController@edit', [$meeting->id])}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                    <a href="{{ action('MeetingController@delete', [$meeting->id])}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </td>
-            </tr>
-        @endforeach
-        </table>
-    @endif
-
+        @if (count($meetings) < 1)
+            <div>{{ trans('meetings.noMyMeetings') }}</div>
+        @else
+            <table class="table table-striped">
+                <thead>
+                <td v-on="click:sortBy('id')" v-class="active: sortKey == 'id'">#</td>
+                <td v-on="click:sortBy('title')" v-class="active: sortKey == 'title'">{{ trans('meetings.title') }}</td>
+                <td v-on="click:sortBy('updated_at')" v-class="active: sortKey == 'updated_at'">{{ trans('meetings.lastedit') }}</td>
+                <td>{{ trans('meetings.actions') }}</td>
+                </thead>
+                <tbody>
+                    <tr v-repeat="meetings | orderBy sortKey reverse">
+                        <td>@{{ id }}</td>
+                        <td><a href="/meeting/@{{ id }}">@{{ title }}</a></td>
+                        <td>@{{ updated_at }}</td>
+                        <td>
+                            <a href="/meeting/@{{ id }}/edit""><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                            <a href="/meeting/@{{ id }}/delete""><i class="fa fa-trash-o fa-2x"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        @endif
+    </div>
 @stop

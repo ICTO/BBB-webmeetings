@@ -32,3 +32,5 @@ Route::group(['middleware' => ['auth']], function(){
 
 Route::post('/meeting/{meeting}/join', 'MeetingController@join');
 Route::get('/api/listmeetings', 'MeetingController@apiIndex');
+Route::get('api/mymeetings', 'MeetingController@apiMyMeetings');
+
