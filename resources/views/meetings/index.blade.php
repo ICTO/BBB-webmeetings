@@ -15,8 +15,8 @@
             <div class="body lead">@{{ description }}</div>
         </meeting>
 
-        <ul class="pagination" v-if="totalPages > 1">
-            <li v-repeat="pageNumber: totalPages"><a href="#" v-on="click: setPage(pageNumber)">@{{ pageNumber+1 }}</a></li>
+        <ul class="pagination | filterBy search" v-if="totalPages > 1">
+            <li v-repeat="pageNumber: totalPages" v-class="active: currentPage == pageNumber"><a href="#" v-on="click: setPage(pageNumber)">@{{ pageNumber+1 }}</a></li>
         </ul>
     </div>
 

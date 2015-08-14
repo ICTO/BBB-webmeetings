@@ -12,7 +12,9 @@ index = new Vue (
 
   computed:
     totalPages: () ->
-      return Math.ceil(this.meetings.length / this.itemsPerPage)
+      filterBy = this.$options.filters.filterBy
+      meetings = filterBy.call(this, this.meetings, this.search)
+      return Math.ceil(meetings.length / this.itemsPerPage)
 
   methods:
     fetchMeetings: () ->
