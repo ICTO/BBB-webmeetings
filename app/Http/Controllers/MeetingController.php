@@ -178,7 +178,7 @@ class MeetingController extends Controller
         // Form validation
         $this->validate($request, [
             'username' => 'required|max:60',
-            'accessCode' => 'required|numeric|max:99999'
+            'accessCode' => 'required|numeric|maxint:5'
         ]);
 
         // Check if password provided equals the moderator or attendee password

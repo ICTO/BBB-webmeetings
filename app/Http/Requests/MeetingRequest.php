@@ -36,8 +36,8 @@ class MeetingRequest extends Request
             'title' => 'required',
             'description' => 'required',
             'welcomeText' => 'required',
-            'moderatorAccessCode' => 'required|numeric|max:99999|min:0',
-            'attendeeAccessCode' => 'required|numeric|max:99999|min:0'
+            'moderatorAccessCode' => 'required|numeric|maxint:5|min:0',
+            'attendeeAccessCode' => 'required|numeric|maxint:5|min:0'
         ];
     }
 
